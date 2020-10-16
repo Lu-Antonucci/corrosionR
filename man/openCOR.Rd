@@ -10,10 +10,10 @@ openCOR(arch)
 \item{arch}{\emph{arch} = file text from measure}
 }
 \value{
-
+Dataframe(E = Potential, I = Current, time = Time)
 }
 \description{
-Open files of corrosion studies from different sources
+Open files of corrosion studies from different sources.
 This version supports \emph{.cor} files of the CorrWare TM software, for measuring
 cyclic voltammetry, open circuit potential, and potentiodinamycs.
 }

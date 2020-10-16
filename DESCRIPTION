@@ -2,11 +2,26 @@ Package: corrosionR
 Title: Electrochemical Data Analysis in R for Reproducible Research
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "Gabriel O.",
+    c(person(given = "Gabriel O.",
            family = "Mendivil",
            role = c("aut", "cre"),
            email = "g.mendivil@cidepint.ing.unlp.edu.ar",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+           comment = c(Telegram = "@mendivilg")),
+      person(given = "Luisina",
+           family = "Antonucci",
+           role = c("aut"),
+           email = "l.antonucci@cidepint.ing.unlp.edu.ar",
+           comment = c(Telegram = "@LuAnt")), 
+      person(given = "Mauro J.",
+           family = "Banera",
+           role = c("aut"),
+           email = "m.banera@cidepint.ing.unlp.edu.ar",
+           comment = c(Telegram = "@banera")), 
+      person(given = "Néstor B.",
+           family = "Álvarez",
+           role = c("aut"),
+           email = "n.alvarez@cidepint.ing.unlp.edu.ar",
+           comment = c(Telegram = "@alvarez")))
 Description: The *Electrochemical Data Analysis for Reproducible Research package* 
     provides a working environment for the analysis of data from corrosion 
     measurements of equipment that provides its own proprietary software, but 
@@ -17,3 +32,8 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+Imports:
+    dplyr,
+    ggplot2
+Suggests: 
+    testthat
