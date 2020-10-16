@@ -1,15 +1,18 @@
 Package: corrosionR
-Title: What the Package Does (One Line, Title Case)
+Title: Electrochemical Data Analysis in R for Reproducible Research
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Gabriel O.",
+           family = "Mendivil",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
+           email = "g.mendivil@cidepint.ing.unlp.edu.ar",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+Description: The *Electrochemical Data Analysis for Reproducible Research package* 
+    provides a working environment for the analysis of data from corrosion 
+    measurements of equipment that provides its own proprietary software, but 
+    does not offer the flexibility a researcher would want, nor does it 
+    accommodate a reproducible workflow.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
