@@ -31,3 +31,9 @@ library(corrosionR)
 openCOR("path/file.cor")
 ```
 
+## How to cite
+
+``` r
+citation("corrosionR")
+```
+
