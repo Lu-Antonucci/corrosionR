@@ -27,6 +27,6 @@ openCOR <- function(arch) {
   colnames(tmp) <- c("E", "I", "time")
   tmp$E <- as.numeric(as.character(tmp$E))
   tmp$I <- as.numeric(as.character(tmp$I))
-  tmp$tiempo <- as.numeric(as.character(tmp$tiempo))
+  tmp$time <- as.numeric(as.character(tmp$time))
   tmp
 }
