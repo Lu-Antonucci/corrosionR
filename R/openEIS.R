@@ -8,9 +8,12 @@ openDTA <- function(arch) {
       comienzo <- i + 2
   }
   tmp <- utils::read.delim2(arch, encoding = "UTF8", header = FALSE, skip = comienzo)
-  tmp <- tmp[, c(3, 4, 5, 6, 10,  11)]
-  colnames(tmp) <- c("time", "freq", "real", "imag", "Idc", "Vdc") # OJO el
-  tmp
+  ## tmp <- tmp[, c(3, 4, 5, 6, 10,  11)]
+  ## unifico formato de tabla como:
+  ## time freq real imag
+  tmp <- tmp[, c(3, 4, 5, 6)]
+
+  colnames(tmp) <- c("time", "freq", "real", "imag") # OJO el  tmp
 }
 
 openZb <- function(arch) {
@@ -24,8 +27,9 @@ openZb <- function(arch) {
   }
 
   tmp <- utils::read.delim2(arch, encoding = "UTF8", header = FALSE, sep = ",", skip = comienzo, stringsAsFactors = FALSE)
-  tmp <- tmp[, c(1, 5, 6)]
-  colnames(tmp) <- c("freq", "real", "imag")
+  tmp <- tmp[, c(4, 1, 5, 6)]
+  colnames(tmp) <- c("time", "freq", "real", "imag")
+  tmp$time <- as.double(tmp$time)
   tmp$freq <- as.double(tmp$freq)
   tmp$real <- as.double(tmp$real)
   tmp$imag <- as.double(tmp$imag)
@@ -42,8 +46,9 @@ openZ <- function(arch) {
       comienzo <- i
   }
   tmp <- utils::read.delim2(arch, encoding = "UTF8", header = FALSE, skip = comienzo, stringsAsFactors = FALSE)
-  tmp <- tmp[, c(1, 5, 6)]
-  colnames(tmp) <- c("freq", "real", "imag")
+  tmp <- tmp[, c(4, 1, 5, 6)]
+  colnames(tmp) <- c("time", "freq", "real", "imag")
+  tmp$time <- as.double(tmp$time)
   tmp$freq <- as.double(tmp$freq)
   tmp$real <- as.double(tmp$real)
   tmp$imag <- as.double(tmp$imag)
@@ -53,8 +58,8 @@ openZ <- function(arch) {
 openNOVA <- function(arch) {
 
   tmp <- utils::read.delim2(arch, encoding = "UTF8", header = FALSE, sep = ";", skip = 1)
-  tmp <- tmp[, c(2, 3, 4)]
-  colnames(tmp) <- c("freq", "real", "imag")
+  tmp <- tmp[, c(7, 2, 3, 4)]
+  colnames(tmp) <- c("time", "freq", "real", "imag")
   tmp$imag <- tmp$imag * -1
   tmp
 }
