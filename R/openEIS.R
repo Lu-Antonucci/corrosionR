@@ -75,10 +75,10 @@ openNOVA <- function(arch) {
 #' @return dataframe con variables freq, real, imag
 #' @export
 #'
-#' @examples
+## @examples
 
-openEIS <- function() {
-  arch <- path.expand(file.choose())
+openEIS <- function(arch) {
+  ##arch <- path.expand(file.choose()) abre un dialogo.
   conn <- file(arch, open = "r")
   linn <- readLines(conn)
   for (i in 1:length(linn)) {
