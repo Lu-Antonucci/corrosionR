@@ -29,6 +29,8 @@ This is a basic example which shows you how to solve a common problem:
 library(corrosionR)
 ## basic example code
 openCOR("path/file.cor")
+
+openEIS("path/file.cor")
 ```
 
 ## How to cite
