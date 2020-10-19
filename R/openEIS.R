@@ -13,7 +13,8 @@ openDTA <- function(arch) {
   ## time freq real imag
   tmp <- tmp[, c(3, 4, 5, 6)]
 
-  colnames(tmp) <- c("time", "freq", "real", "imag") # OJO el  tmp
+  colnames(tmp) <- c("time", "freq", "real", "imag") # OJO el
+  tmp
 }
 
 openZb <- function(arch) {
