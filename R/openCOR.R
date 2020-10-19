@@ -8,8 +8,8 @@ openCorrware <- function(arch) {
       comienzo <- i
   }
   tmp <- utils::read.delim2(arch, encoding = "UTF8", header = FALSE, skip = comienzo)
-  tmp <- tmp[, c(1, 2, 3)]
-  colnames(tmp) <- c("E", "I", "time")
+  tmp <- tmp[, c(3, 1, 2)]
+  colnames(tmp) <- c("time", "E", "I")
   tmp$E <- as.numeric(as.character(tmp$E))
   tmp$I <- as.numeric(as.character(tmp$I))
   tmp$time <- as.numeric(as.character(tmp$time))
@@ -59,19 +59,6 @@ openCOR <- function(arch) {
     if (linn[i] == "CORRW ASCII") {
       close(conn)
       df <- openCorrware(arch)
-      break
-    }
-    # .z file, ZPlot software 2.6b version
-    if (linn[i] == "\"ZPlotW Data File: Version 2.6b\"") {
-      close(conn)
-      df <- openZb(arch)
-      break
-    }
-    # .txt ascii NOVA 2.1.3 version
-
-    if (linn[i] == "Index;Frequency (Hz);Z' (Ω);-Z'' (Ω);Z (Ω);-Phase (°);Time (s)") {
-      close(conn)
-      df <- openNOVA(arch)
       break
     }
 
