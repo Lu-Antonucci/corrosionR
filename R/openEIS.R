@@ -1,39 +1,30 @@
 openDTA <- function(arch) {
-
-  conn <- file(arch, open = "r")
-  linn <- readLines(conn)
-  close(conn)
-  for (i in 1:length(linn)) {
-    if (linn[i] == "ZCURVE\tTABLE")
-      comienzo <- i + 2
-  }
+  comienzo <- grep("^ZCURVE", readLines(arch))
+  comienzo <- comienzo + 2
   tmp <- utils::read.delim2(arch, encoding = "UTF8", header = FALSE, skip = comienzo)
-  ## tmp <- tmp[, c(3, 4, 5, 6, 10,  11)]
-  ## unifico formato de tabla como:
-  ## time freq real imag
   tmp <- tmp[, c(3, 4, 5, 6)]
-
-  colnames(tmp) <- c("time", "freq", "real", "imag") # OJO el
+  tmp$file <- basename(arch)
+  colnames(tmp) <- c("time", "freq", "real", "imag", "file")
+  tmp$time <- as.numeric(tmp$time)
+  tmp$freq <- as.numeric(tmp$freq)
+  tmp$real <- as.numeric(tmp$real)
+  tmp$imag <- as.numeric(tmp$imag)
+  tmp$file <- as.factor(tmp$file)
   tmp
 }
 
 openZb <- function(arch) {
-
-  conn <- file(arch, open = "r")
-  linn <- readLines(conn)
-  close(conn)
-  for (i in 1:length(linn)) {
-    if (linn[i] == "\"Frequency\"")
-      comienzo <- i + 3
-  }
-
+  comienzo <- grep("^\"Frequency\"", readLines(arch))
+  comienzo <- comienzo + 3
   tmp <- utils::read.delim2(arch, encoding = "UTF8", header = FALSE, sep = ",", skip = comienzo, stringsAsFactors = FALSE)
   tmp <- tmp[, c(4, 1, 5, 6)]
-  colnames(tmp) <- c("time", "freq", "real", "imag")
-  tmp$time <- as.double(tmp$time)
-  tmp$freq <- as.double(tmp$freq)
-  tmp$real <- as.double(tmp$real)
-  tmp$imag <- as.double(tmp$imag)
+  tmp$file <- basename(arch)
+  colnames(tmp) <- c("time", "freq", "real", "imag", "file")
+  tmp$time <- as.numeric(tmp$time)
+  tmp$freq <- as.numeric(tmp$freq)
+  tmp$real <- as.numeric(tmp$real)
+  tmp$imag <- as.numeric(tmp$imag)
+  tmp$file <- as.factor(tmp$file)
   tmp
 }
 
