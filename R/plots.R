@@ -7,9 +7,8 @@
 #' @return Plot
 #' @export
 #'
-#' @examples
-#' # Genera un Nyquist con puntos rojos
-#' nyquist(mydata, col="red")
+# @examples
+
 nyquist <- function(df, color ="red", ...){
 
   ggplot2::ggplot(df) +
