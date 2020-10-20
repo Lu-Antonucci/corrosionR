@@ -14,6 +14,6 @@ Dataframe(E = Potential, I = Current, time = Time)
 }
 \description{
 Open files of corrosion studies from different sources.
-This version supports \emph{.cor} files of the CorrWare TM software, for measuring
+This version supports \emph{.cor} and \emph{.DTA} files of the CorrWare TM software, for measuring
 cyclic voltammetry, open circuit potential, and potentiodinamycs.
 }
