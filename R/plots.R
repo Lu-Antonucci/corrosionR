@@ -9,10 +9,10 @@
 #'
 # @examples
 
-nyquist <- function(df, color ="red", ...){
+nyquist <- function(df, color ="red", ...) {
 
   ggplot2::ggplot(df) +
-    ggplot2::geom_point( ggplot2::aes(real, -imag, col = color, ...) +
+    ggplot2::geom_point(ggplot2::aes(x=real, y=-imag, col=color, ...)) +
     ggplot2::xlab(expression(Z~Real~(Omega))) + ggplot2::ylab(expression(-Z~Imag~(Omega))) +
     ggplot2::theme_bw()+
     ggplot2::theme(plot.title = ggplot2::element_text(size=14, face="bold.italic"),
