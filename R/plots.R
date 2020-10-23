@@ -1,3 +1,5 @@
+source("R/temas.R")
+
 #' Genera gráfico de Nyquist o Cole-Cole
 #'
 #' @param df Dataframe con los datos de frecuencia, Real e Imag
@@ -9,14 +11,10 @@
 #'
 # @examples
 
-nyquist <- function(df, color ="red", ...) {
+plotNyquist <- function(df, color = "red", ...){
 
-  ggplot2::ggplot(df) +
+    ggplot2::ggplot(df) +
     ggplot2::geom_point(ggplot2::aes(x=real, y=-imag, col=color, ...)) +
     ggplot2::xlab(expression(Z~Real~(Omega))) + ggplot2::ylab(expression(-Z~Imag~(Omega))) +
-    ggplot2::theme_bw()+
-    ggplot2::theme(plot.title = ggplot2::element_text(size=14, face="bold.italic"),
-                   axis.title.x = ggplot2::element_text(size=14, face="bold"),
-                   axis.title.y = ggplot2::element_text(size=14, face="bold"))
-
+    theme_at()
 }

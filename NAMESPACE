@@ -3,3 +3,4 @@
 export(nyquist)
 export(openCOR)
 export(openEIS)
+export(plotNyquist)
