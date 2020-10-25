@@ -1,4 +1,4 @@
-source("R/temas.R")
+#source("R/temas.R")
 
 #' Genera gráfico de Nyquist o Cole-Cole
 #'
@@ -6,10 +6,15 @@ source("R/temas.R")
 #' @param color Color de los puntos
 #' @param ... parametros usados en ggplot2
 #'
-#' @return Plot
+#' @return plotNyquist
 #' @export
 #'
-# @examples
+#' @examples
+#' # Abre medida de software Framework v. 7.06 de Gammry
+#'
+#' file <- "/corrosionR/extdata/EIS_Framework_version7_06.DTA"
+#' medida <- openEIS(paste(.libPaths()[1], file, sep=""))
+#' plotNyquist(medida)
 
 plotNyquist <- function(df, color = "red", ...){
 
