@@ -6,18 +6,34 @@
 \usage{
 openEIS(arch)
 }
+\arguments{
+\item{arch}{Archivo obtenido de los siguientes softwares:
+\itemize{
+\item *.DTA file,  Gamry Framework 7.06 version
+\item *.z file,  ZPlot software 2.6 and 2.6b version
+\item *.txt ascii AUTOLAB NOVA 2.1.3 version
+}}
+}
 \value{
-dataframe con variables freq, real, imag
+Dataframe con las siguentes columnas:
+\itemize{
+\item time: Tiempo transacurrido desde el comienzo de la
+medida, (\emph{s})
+\item freq: Frecuencia, (\emph{Hz}).
+\item real: Parte real del módulo de impedancia, (\emph{Ohms}).
+\item imag: Parte imaginaria del módulo de impedancia, (\emph{Ohms}).
+\item file: Nombre del archivo.
+}
 }
 \description{
 Importa datos de impedancia de distintos softwares adquisidores
 }
 \details{
-Esta función extrae la frecuencia , parte imaginaria y parte real de los archivos generados por:
-
-\itemize{
-\item *.DTA file,  Gamry Framework 7.06 version
-\item *.z file,  ZPlot software 2.6 and 2.6b version
-\item *.txt ascii AUTOLAB NOVA 2.1.3 version
+Esta función extrae el tiempo, frecuencia , parte imaginaria y parte real de los archivos generados por:
 }
+\examples{
+# Abre medida de software Framework v. 7.06 de Gammry
+
+file <- "/corrosionR/extdata/EIS_Framework_version7_06.DTA"
+medida <- openEIS(paste(.libPaths()[1], file, sep=""))
 }

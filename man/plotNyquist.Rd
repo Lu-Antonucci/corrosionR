@@ -14,8 +14,15 @@ plotNyquist(df, color = "red", ...)
 \item{...}{parametros usados en ggplot2}
 }
 \value{
-Plot
+plotNyquist
 }
 \description{
 Genera gráfico de Nyquist o Cole-Cole
+}
+\examples{
+# Abre medida de software Framework v. 7.06 de Gammry
+
+file <- "/corrosionR/extdata/EIS_Framework_version7_06.DTA"
+medida <- openEIS(paste(.libPaths()[1], file, sep=""))
+plotNyquist(medida)
 }
