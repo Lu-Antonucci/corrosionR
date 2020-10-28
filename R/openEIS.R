@@ -62,17 +62,29 @@ openNOVA <- function(arch) {
 #' Importa datos de impedancia de distintos softwares adquisidores
 #'
 #'
-#' Esta función extrae la frecuencia , parte imaginaria y parte real de los archivos generados por:
-#'
+#' Esta función extrae el tiempo, frecuencia , parte imaginaria y parte real de los archivos generados por:
+#'@param arch Archivo obtenido de los siguientes softwares:
 #'\itemize{
 #'   \item *.DTA file,  Gamry Framework 7.06 version
 #'   \item *.z file,  ZPlot software 2.6 and 2.6b version
 #'   \item *.txt ascii AUTOLAB NOVA 2.1.3 version
 #'}
-#' @return dataframe con variables freq, real, imag
+#' @return Dataframe con las siguentes columnas:
+#'\itemize{
+#'   \item time: Tiempo transacurrido desde el comienzo de la
+#'   medida, (*s*)
+#'   \item freq: Frecuencia, (*Hz*).
+#'   \item real: Parte real del módulo de impedancia, (*Ohms*).
+#'   \item imag: Parte imaginaria del módulo de impedancia, (*Ohms*).
+#'   \item file: Nombre del archivo.
+#'}
 #' @export
 #'
-## @examples
+#' @examples
+#' # Abre medida de software Framework v. 7.06 de Gammry
+#'
+#' file <- "/corrosionR/extdata/EIS_Framework_version7_06.DTA"
+#' medida <- openEIS(paste(.libPaths()[1], file, sep=""))
 
 openEIS <- function(arch) {
   ##arch <- path.expand(file.choose()) abre un dialogo.
@@ -99,7 +111,10 @@ openEIS <- function(arch) {
     }
     # .txt ascii NOVA 2.1.3 version
 
-    if (linn[i] == "Index;Frequency (Hz);Z' (Ω);-Z'' (Ω);Z (Ω);-Phase (°);Time (s)") {
+    #if (linn[i] == "Index;Frequency (Hz);Z' (Ω);-Z'' (Ω);Z (Ω);-Phase (°);Time (s)") {
+    ## \u00B0 símbolo unicode de grado
+    ## \u03A9 símbolo unicode de omega mayúscula
+    if (linn[i] == "Index;Frequency (Hz);Z' (\u03A9);-Z'' (\u03A9);Z (\u03A9);-Phase (\u00B0);Time (s)") {
       close(conn)
       df <- openNOVA(arch)
       break

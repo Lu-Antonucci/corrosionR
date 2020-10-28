@@ -24,19 +24,33 @@ openGamry <- function(arch) {
   tmp$file <- as.factor(tmp$file)
   tmp
 }
-#' Open files of corrosion studies from different sources
+#'\code{openCOR()}
 #'
 #' Open files of corrosion studies from different sources.
-#' This version supports *.cor* and *.DTA* files of the CorrWare TM software, for measuring
-#' cyclic voltammetry, open circuit potential, and potentiodinamycs.
+#' For measuring cyclic voltammetry, open circuit potential, and potentiodinamycs.
 #'
 #' @param arch
-#' *arch* = file text from measure
-#' @return
-#' Dataframe(E = Potential, I = Current, time = Time)
+#'  \itemize{
+#'   \item *.DTA file,  Gamry Framework 7.06 version
+#'   \item *.cor file,  CorrWare TM software 2.6 and 2.6b version
+#'#'}
+#'
+#' @return Dataframe con las siguentes columnas:
+#'\itemize{
+#'   \item time: Tiempo transacurrido desde el comienzo de la
+#'   medida, (*s*)
+#'   \item E: Potencial, (*volts*).
+#'   \item I: Corriente, (*Amperes*).
+#'   \item file: Nombre del archivo.
+#'}
 #' @export
 #'
-# @examples
+#' @examples
+#' # Abre medida Voltametŕía Cíclica del software Framework
+#' v. 7.06 de Gammry
+#'
+#' file <- "/corrosionR/extdata/CV_Framework_version7_06.DTA"
+#' medida <- openCOR(paste(.libPaths()[1], file, sep=""))
 
 openCOR <- function(arch) {
   conn <- file(arch, open = "r")
